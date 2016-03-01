@@ -1,0 +1,28 @@
+Source: ppp-hubeiexin
+Maintainer: Xinkai Chen <xinkai.chen@qq.com>
+Section: net
+Priority: optional
+Build-Depends:
+ cmake,
+ fakeroot,
+ debhelper,
+ libssl-dev,
+ ppp-dev,
+ pkg-config,
+ gcc
+Standards-Version: 3.9.5
+Homepage: https://github.com/Xinkai/Hubei-Exin
+Vcs-Git: https://github.com/Xinkai/Hubei-Exin.git
+Vcs-Browser: https://github.com/Xinkai/Hubei-Exin
+
+Package: ppp-hubeiexin
+Architecture: i386 amd64
+Depends:
+ ${shlibs:Depends}, ${misc:Depends},
+ python3,
+ ppp,
+ openssl,
+ iproute2,
+ systemd
+Description: Hubei Exin Dialer.
+ Hubei Exin Dialer.

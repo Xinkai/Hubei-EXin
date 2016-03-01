@@ -1,0 +1,33 @@
+# Maintainer: Xinkai Chen <xinkai.chen@qq.com>
+_basename=hubeiexin
+pkgname=ppp-hubeiexin
+pkgver=0.1
+pkgrel=1
+epoch=
+pkgdesc="PPP Authentication Module for Hubei Exin"
+arch=("i686" "x86_64" "armv7h")
+url="https://github.com/Xinkai/Hubei-EXin"
+license=('GPLv2')
+groups=()
+depends=("ppp" "openssl" "iproute2" "python")
+makedepends=("ppp" "openssl" "cmake")
+install=ppp-hubeiexin.install
+source=(hubeiexin::git+ssh://git@bitbucket.org/xinkai/hubeiexin4linux.git)
+md5sums=('SKIP')
+
+build() {
+        mkdir -p $_basename/build
+        cd $_basename/build
+        cmake ../src
+        make
+}
+
+check() {
+        cd $_basename/build
+        ctest .
+}
+
+package() {
+        cd $_basename/build
+        make DESTDIR="$pkgdir" install
+}
